@@ -7,7 +7,7 @@ Shanmukha Sai Chakali · E25B070810
 
 By the end of this video, the viewer will be able to understand the behaviour of a function near a point, calculate a limit, distinguish a function's limit from its actual value, and determine whether a function is continuous at a given point.
 
-The six scenes follow a pair of moving points toward a missing point, factor a quotient to recover the limiting height, and compare a continuous graph, a removable discontinuity and a jump.
+The six scenes follow a pair of moving points toward a missing point, factor a quotient to recover the limiting height, and compare three explicitly named functions. The example f keeps its assigned value f(2) = 1. The separate parabola g(x) = x² + 1 is continuous at 2, with value and limit 5. The jump h has unequal one-sided limits.
 
 ## Reproduce the video
 

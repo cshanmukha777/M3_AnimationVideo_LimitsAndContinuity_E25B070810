@@ -1,23 +1,22 @@
-# M3 Animation Video · Production checklist
+# M3 requirements and evidence
 
-Official brief: *M3 Animation Video Project Instructions*, pages 1–5. This individual project counts for 10% of the internal assessment. Submission is due 25 November.
+The five-page brief sets 25 November as the deadline and assigns 10% of internal assessment to this individual project.
 
-| Requirement | Implementation and evidence | Verification |
+| Brief requirement | Evidence | Verification |
 |---|---|---|
-| One approved concept and one-sentence objective | Limits and continuity at a point. README and storyboard. | Review against topic bank and scope. |
-| Six required scenes | Storyboard PDF and six rendered chapters. | Compare cue order, timings and visuals. |
-| Hook, notation and visual intuition | Moving dots, one-sided limits and a hole. | Check inputs, approaching values and point conventions. |
-| Intermediate steps and interpretation | Factor, cancel under the domain restriction, fill the hole and compare with a jump. | Independently recalculate and review the graph coordinates. |
-| Readability and purposeful motion | Consistent palette, labeled axes, sequential reveal. | Inspect rendered frames and transitions. |
-| Opening and closing frames | Student details, three takeaways, references, AI disclosure and music status. | Inspect first and last frames. |
-| MP4, landscape 16:9, preferred 1080p, roughly five minutes, seven minutes maximum | Video/ | Check container, dimensions, duration and full decode. |
-| Clear voice-over and credited music if used | Narration cues and final audio stream. No background music planned. | Check synchronization and levels. |
-| Complete editable sources and assets | Code/, requirements.txt, Narration/ and README. | Reproduce from the documented entry point. |
-| Storyboard PDF and supporting documents | Storyboard/ and Documentation/. | Open PDF, confirm six scenes and review support files. |
-| Original effort and AI disclosure | Custom graph animations, original wording, references and disclosure. | Compare credits and build inputs. |
-| Independent mathematical check and peer review | Mathematical verification and peer review of a draft. | Complete calculations in verification document. A human peer still needs to review. |
-| Public same-repository delivery and naming | Existing repository named M3_AnimationVideo_LimitsAndContinuity_E25B070810. | Verify public visibility and every deliverable anonymously before submission. |
-| Individual viva | Twenty questions and answers. | Student explains algebra, design and code independently. |
-| Submit Google Form by 25 November | Student submits the public repository URL when the instructor shares the form. | Confirm submission receipt. |
+| One approved, focused concept and a one-sentence objective | README and storyboard cover | Limits and continuity at one point is in the approved topic bank. |
+| Six-scene storyboard PDF | Storyboard/ | Seven pages verified: cover plus hook, notation, visual intuition, worked example, interpretation and credits. |
+| Opening title, topic, name and student ID | Video, scene 1 | Inspected opening frame. |
+| Clear logical explanation with visual intuition and intermediate steps | Scenes 1–5 and Narration/ | Traced the same f through its graph, factorization and continuity test. Explicitly introduced separate g and h cases. |
+| Correct symbols, rules, graphs and calculations | Scenes 2–5 and mathematical verification | Independent derivations and exact rational samples confirm both limits, all markers and continuity outcomes. |
+| Purposeful motion, labelled axes, clean and consistent presentation | Scene source and rendered MP4 | Inspected representative frames from each chapter. Curves, markers and moving dots share axes. |
+| Three on-screen takeaways, credits and AI disclosure | Closing frame, references and AI disclosure | Inspected closing frame. ChatGPT and ElevenLabs are credited. |
+| MP4 in 16:9, preferably 1080p, target five minutes, seven-minute maximum | Video/ | 1920 × 1080, 24 fps and 283.629 seconds. Full decode completed. |
+| Clear narration and optional credited low-level music | MP4 audio and six source tracks | Word-timed transcripts agree with the script and cues. Sample peak −1.5 dBFS. No music used. Human listening pass pending. |
+| Original work and complete editable source plus assets | Code/, Narration/, requirements.txt and README | Custom Python renders the MP4 using the six editable cues and included source audio. |
+| Public repository, official naming and all deliverables in one place | M3_AnimationVideo_LimitsAndContinuity_E25B070810 | Repository contains final video, editable source, storyboard and support documents. Confirm the links in a private window before submission. |
+| Independent mathematics check and peer review | Mathematical verification and QA | Derivations checked. Student paper rehearsal and peer review pending. |
+| Individual viva | Viva preparation guide | Twenty questions prepared. Individual delivery remains with the student. |
+| Google Form submission by 25 November | Instructor's form | Await the form link and submit the repository URL. |
 
-Page 4 calls for four deliverables but prints only video and code in that list. Page 3 explicitly requires the storyboard PDF and page 1 requires supporting documents. This project includes all four groups.
+The page 4 list prints video and code under a four-deliverable heading. The storyboard and supporting documents are included as required elsewhere in the brief. Infinite discontinuities are outside this focused treatment and are not an explicit requirement.

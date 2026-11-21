@@ -9,30 +9,30 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph
 
-from main import FPS, LEAD, ROOT, SPEED, TAILS, duration
+from main import CUES, FPS, LEAD, ROOT, SPEED, TAILS, duration
 from scenes import frame
 
 DETAIL = (
-    ("Separate a nearby height from an assigned value.",
-     "Move the gold and blue points inward along the same line, with axis guides. Reveal the two heights.",
-     "Nearby rule x + 2. Open (2, 4). Filled (2, 1)."),
-    ("Define the limit and its symbols.",
-     "Hold the limit notation on screen and reveal the nearby rule and directional notation.",
-     "x is an input, a is the target input, f(x) is an output and L is the limiting output."),
-    ("Show where the two one-sided limits come from.",
-     "Animate each direction on the same scale. Remove the assigned point while keeping the approaching curve.",
-     "Both sides approach 4. The value at 2 can be 1 or undefined."),
-    ("Evaluate a limit and construct a continuous extension.",
-     "Reveal factorization, cancellation and the limiting result. Fill the hole during the piecewise example.",
-     "The quotient (x² − 4)/(x − 2) equals x + 2 for x different from 2. Define g(2) = 4."),
-    ("Interpret the three continuity checks on graphs.",
-     "Switch between the complete line, moved point and jump. Highlight the failed checks.",
-     "Complete: 4 = 4. Moved: 4 differs from 1. Jump: one-sided limits 4 and 2 disagree."),
-    ("Reinforce three takeaways and credit the tools and references.",
-     "Hold the recap and credits for reading, with an end marker in the closing beat.",
-     "A limit describes nearby outputs. The assigned value can differ. Continuity needs agreement."),
+    ("Separate approaching height from assigned output.",
+     "Approach input 2 using gold and blue points with horizontal guides. Hold the endpoint markers.",
+     "Open (2, 4) excludes that point. Filled (2, 1) gives f(2) = 1."),
+    ("Define limits, notation and one-sided approaches.",
+     "Reveal the tolerance statement and the left and right approach symbols in narration order.",
+     "x is the input, a is the target input, f(x) is the output and L is the limit. Use x different from a."),
+    ("Infer the limit from samples on each side.",
+     "Animate each side on the same axes, then compare both guides. The filled point stays at height 1.",
+     "The left and right limits equal 4. The assigned function value is f(2) = 1."),
+    ("Evaluate the limit of the piecewise function f.",
+     "Reveal the two branches, factor the numerator, cancel and show the limiting height.",
+     "f(x) = (x² − 4)/(x − 2) = x + 2 for x different from 2. f(2) = 1. The limit equals 4."),
+    ("Apply the three tests to three explicitly named functions.",
+     "Show f, then the parabola g, then the jump h. Move the dots along each function's own branches.",
+     "f: limit 4, value 1. g(x) = x² + 1: limit and value 5. h: left 4, right 2, value 2."),
+    ("Reinforce the three takeaways and display credits.",
+     "Hold the recap, then reveal the reference, source and voice credits for reading.",
+     "A finite two-sided limit concerns nearby outputs. Continuity requires the limit and value to agree."),
 )
-PREVIEW_BEAT = (1, 2, 2, 2, 2, 1)
+PREVIEW_BEAT = (1, 2, 2, 2, 1, 1)
 W, H = 612, 792
 
 
@@ -81,8 +81,9 @@ def render():
         for heading, body in zip(("Purpose", "Visual and animation direction", "Mathematical content"), DETAIL[i]):
             y = paragraph(pdf, f"{heading} — {body}", y)
         y = paragraph(pdf, "Narration", y-3, 12)
-        for cue in narration:
-            y = paragraph(pdf, cue, y)
+        cue_times = (LEAD, *(LEAD + t/SPEED for t in CUES[i]))
+        for time, cue in zip(cue_times, narration):
+            y = paragraph(pdf, f"{start+time:.1f}s  {cue}", y)
         if y < 30:
             raise ValueError(f"Scene {i+1} exceeds its page")
         pdf.showPage()

@@ -11,16 +11,17 @@ import math
 import subprocess
 import tempfile
 
+from PIL import Image
 from graphics import HEIGHT, WIDTH
 from scenes import frame
 
 ROOT = Path(__file__).resolve().parents[1]
-SPEED = 0.89
-LEAD = 0.9
-TAILS = (2.5, 2.5, 3.0, 3.5, 3.5, 6.0)
-CUES = ((15.0,), (14.7, 31.1), (10.5, 23.0), (14.2, 24.4, 38.4),
-        (14.3, 29.0), (10.8,))
-FPS = 12
+SPEED = 0.84
+LEAD = 0.65
+TAILS = (2, 2, 2, 2, 2, 5)
+CUES = ((13.25,), (13.3, 25.1), (11.7, 22.4), (14.45, 28.5),
+        (19.3, 39.3), (10.55,))
+FPS = 24
 
 
 def duration(path):
@@ -55,12 +56,14 @@ def render(output):
             "ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo",
             "-pixel_format", "rgb24", "-video_size", f"{WIDTH}x{HEIGHT}",
             "-framerate", str(FPS), "-i", "pipe:0", "-i", str(soundtrack),
-            "-map", "0:v", "-map", "1:a", "-vf", "fps=24", "-pix_fmt", "yuv420p",
+            "-map", "0:v", "-map", "1:a", "-pix_fmt", "yuv420p",
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "24",
             "-threads", "3", "-c:a", "copy", "-movflags", "+faststart", str(output),
         ]
         with subprocess.Popen(command, stdin=subprocess.PIPE) as encoder:
             previous = None
+            last_scene_frame = None
+            picture = None
             pixels = b""
             for scene, count in enumerate(counts):
                 boundaries = [0, *(LEAD + t/SPEED for t in CUES[scene]), count/FPS]
@@ -70,13 +73,19 @@ def render(output):
                     beat = bisect_right(boundaries, t) - 1
                     elapsed = t-boundaries[beat]
                     span = boundaries[beat+1]-boundaries[beat]
-                    progress = round(min(1, elapsed/(span*0.81)), 2)
-                    static = scene in (1, 5) or scene == 3 and beat < 2
+                    fraction = min(1, elapsed/(span*0.76))
+                    progress = round(fraction*fraction*(3-2*fraction), 2)
+                    static = scene in (1, 5) or scene == 0 and beat == 1 or scene == 3 and beat < 2
                     key = (scene, beat, 0 if static else progress)
                     if key != previous:
-                        pixels = frame(*key).tobytes()
+                        picture = frame(*key)
+                        pixels = picture.tobytes()
                         previous = key
-                    encoder.stdin.write(pixels)
+                    if last_scene_frame is not None and t < 0.42:
+                        encoder.stdin.write(Image.blend(last_scene_frame, picture, t/0.42).tobytes())
+                    else:
+                        encoder.stdin.write(pixels)
+                last_scene_frame = picture
             encoder.stdin.close()
             if encoder.wait() != 0:
                 raise RuntimeError("Video encoding failed")

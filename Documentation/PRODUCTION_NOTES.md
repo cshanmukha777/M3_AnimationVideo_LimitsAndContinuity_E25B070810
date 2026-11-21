@@ -1,6 +1,6 @@
 # Production notes
 
-The repository started empty. The animation uses Pillow and FFmpeg because downloading Manim dependencies timed out in the build environment. The official brief allows custom Python animations. Six generated MP3 takes use one George library voice. No music competes with the explanation.
+The revised animation uses Pillow and FFmpeg for its editable mathematical renderer. The six scenes use eased samples and audiovisual cues. The continuity comparison changes the function name and graph together. The official brief allows custom Python animations. Six generated MP3 takes use one George library voice. No music competes with the explanation.
 
 The plot uses a common axis scale in every graph scene. Teal marks the function, gold marks motion from the left, blue marks motion from the right, and rose highlights an assigned point when it differs from the approaching height or a continuity condition fails.
 
