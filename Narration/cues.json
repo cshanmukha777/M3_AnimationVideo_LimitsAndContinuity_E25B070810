@@ -1,48 +1,38 @@
 [
   [
-    "Hook and context",
+    "01/06 \u00b7 Hook / Context \u00b7 0:00\u20130:36",
     [
-      "Two points are moving along the same curve. The gold point comes from the left. The blue point comes from the right. Both inputs are getting closer to two. Look at the horizontal guides. Can you predict the height the points are approaching?",
-      "Both guides head toward height four. At input two itself, the filled point is at height one. The same graph answers two different questions. What happens near two? And what is the output at two? We will use this distinction to calculate a limit and test continuity."
+      "Imagine covering just one point on this graph with your fingertip. You can still see the gold point climbing from the left and the blue point coming down from the right. Which height would you predict under your finger? Follow the line and you would guess four. Lift your finger, though, and the filled point is down at one. Both readings are correct. One describes the surrounding curve. The other tells us what the function actually assigns at the input two."
     ]
   ],
   [
-    "What does a limit say?",
+    "02/06 \u00b7 Concept Introduction \u00b7 0:36\u20131:34",
     [
-      "In our notation, x is the input, f of x is its output, a is the input we approach, and L is the output we approach. Read the expression as: the limit of f of x as x approaches a is L.",
-      "Here is what that means. Pick any positive distance from L. If we take x close enough to a, the outputs will stay within that distance from L. We use points of the function's domain other than a itself.",
-      "The minus sign above a means approach through smaller inputs. The plus sign means approach through larger inputs. When the function has inputs nearby on both sides, the two-sided limit exists as a finite number exactly when the two one-sided limits exist and agree."
+      "Keep your eye on height four. The horizontal strip marks how far above or below four we are willing to let the output wander. Its half width is called epsilon. Now look down at the input axis. The vertical strip selects inputs close to two. Its half width is called delta. For this particular line, moving one tenth horizontally changes the height by exactly one tenth. So we can choose delta equal to epsilon. Narrow the horizontal strip, and the vertical strip tightens with it. Every selected input except two gives an output inside the horizontal strip. However small you make the tolerance, the same argument works. That is what the limit statement means."
     ]
   ],
   [
-    "Read the graph of f",
+    "03/06 \u00b7 Visual Intuition \u00b7 1:34\u20132:22",
     [
-      "This is function f throughout the scene. Start with the gold point. At input one point five the output is three point five. At one point nine the output is three point nine. The left-hand limit is four.",
-      "Now follow the blue point. At two point five the output is four point five. At two point one the output is four point one. The right-hand limit is four too. The approaching heights agree.",
-      "The open circle at two comma four excludes that point. The filled point at two comma one gives the assigned value. So f of two is one. The two-sided limit is four. This difference will matter when we test continuity."
+      "Follow the coordinate labels. The first number is the input. The second is the height. Starting on the left, one point five gives three point five. As the gold point slides right, each remaining gap to two is exactly the remaining gap to four. Now watch the blue point. It starts on the right and approaches the same height from above. The right-hand limit is also four. Since the two sides agree, the two-sided limit is four. The open circle marks an excluded point. The filled point still gives the actual value at two, which is one."
     ]
   ],
   [
-    "Calculate the limit of f",
+    "04/06 \u00b7 Worked Example \u00b7 2:22\u20133:23",
     [
-      "Here is the full definition of f. For x different from two, use the quotient. At x equal to two, use the second branch, which assigns one. Putting two into the quotient alone gives zero divided by zero, which is undefined.",
-      "Factor the numerator as x minus two times x plus two. Whenever x is different from two, x minus two is nonzero, so cancel the common factor. This leaves x plus two at every nearby input on either side.",
-      "Take the limit of x plus two as x approaches two. Two plus two is four. The simplification explains why both dots follow the line. At two the second branch still assigns one. The open circle and the filled point record those two facts."
+      "Can algebra explain the line we just saw? Away from two, the function is the quotient on screen. At two itself, a separate rule assigns one. Look first at the numerator. The difference of two squares factors into x minus two times x plus two. Now the same factor appears above and below the fraction bar. For nearby inputs different from two, that factor is nonzero. Dividing the top and bottom by it leaves x plus two. Keep the restriction in view. This cancellation describes the curve on either side of the hole. As the input approaches two, the simplified expression approaches two plus two, or four. The assigned value at the exact point still comes from the separate rule."
     ]
   ],
   [
-    "Check continuity",
+    "05/06 \u00b7 Interpretation \u00b7 3:23\u20134:28",
     [
-      "At any input a, continuity requires three things. The function value must be defined. The two-sided limit must exist. And the two must agree. For f at two, the first two checks pass. The last one fails, because one and four are different. Assigning four at two would repair this removable discontinuity.",
-      "Now switch to a different function, g of x equals x squared plus one. The filled point at two comma five gives g of two. On the curve, both moving points approach height five. Squaring and adding one preserve the limit, so the limit is two squared plus one, or five. All three checks pass.",
-      "Finally, consider a jump in a third function, h. Its left branch approaches four, and its right branch approaches two. The point at height two gives h of two, but the common limit is missing. Changing the assigned value cannot change either approach."
+      "Continuity at a point takes three checks. Is there an assigned value? Is there a two-sided limit? Do they agree? Here the first two answers are yes, but one and four differ. Imagine redefining just the assigned value. Lift that single point up to the hole. Once it reaches four, the repaired function is continuous. The neighbouring curve never had to move. Now switch to a different function, the parabola x squared plus one. At two its height is five, and both sides approach five. All three checks pass. Finally look at the jump. The branch on the left approaches four, while the branch on the right approaches two. Moving one point cannot bring those branches together. This time the two-sided limit itself is missing."
     ]
   ],
   [
-    "Summary and credits",
+    "06/06 \u00b7 Summary & Credits \u00b7 4:28\u20135:00",
     [
-      "A limit describes the output that nearby inputs approach. The assigned value at the target input can be different. Continuity means the assigned value and the two-sided limit both exist and agree.",
-      "On your next graph, read the left approach, the right approach, and the filled point. Keeping those three observations separate tells you exactly which continuity check passes or fails."
+      "Read a graph in three passes. First, follow the nearby outputs from both sides. If they approach the same height, that height is the limit. Second, read the filled point to find the assigned value. The two numbers can differ. Third, test continuity. The assigned value and the limit must both exist and agree. Those three questions let you distinguish a continuous curve, a repairable hole, and a jump."
     ]
   ]
 ]

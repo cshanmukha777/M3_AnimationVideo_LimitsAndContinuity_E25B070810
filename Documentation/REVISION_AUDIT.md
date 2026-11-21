@@ -1,4 +1,4 @@
-# Revision audit
+# Revision audit — archived 4:44 edition
 
 The baseline review covered the five-page assignment, published source and narration script, storyboard PDF, and rendered video samples across all six chapters. The earlier video had the required dimensions, narration and chapter structure. Its visual intuition scene showed f(2) = 1 and later switched to an undefined f(2) by removing the filled point, while retaining the symbol f. The switch changed the function without changing its name. The worked example then used the quotient and a repaired line. The opening also restarted its moving points during the reveal. The direction colours were useful and were retained.
 
