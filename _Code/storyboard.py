@@ -5,6 +5,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, 
 from io import BytesIO
 from main import ROOT,DURATIONS
 from scenes import frame,TITLES
+from practice import CHECKS
 
 def build():
     style=getSampleStyleSheet()
@@ -26,6 +27,8 @@ def build():
         parts.append(PDFImage(stream,width=450,height=253.125))
         para(direction)
         para(body)
+        if i < len(CHECKS):
+            para("Practice: "+CHECKS[i][1]+" The solution appears after eight seconds.")
     SimpleDocTemplate(str(ROOT/"Storyboard/M3_Animation_Storyboard.pdf")).build(parts)
 
 if __name__=="__main__":

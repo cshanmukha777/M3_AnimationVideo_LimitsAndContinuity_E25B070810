@@ -11,7 +11,7 @@ The five-page brief sets 25 November as the deadline and assigns 10% of internal
 | Correct symbols, rules, graphs and calculations | Scenes 2–5 and mathematical verification | Independent derivations and exact rational samples confirm both limits, all markers and continuity outcomes. |
 | Purposeful motion, labelled axes, clean and consistent presentation | Scene source and rendered MP4 | Inspected representative frames from each chapter. Curves, markers and moving dots share axes. |
 | Three on-screen takeaways, credits and AI disclosure | Closing frame, references and AI disclosure | Inspected closing frame. ChatGPT and ElevenLabs are credited. |
-| MP4 in 16:9, preferably 1080p, target five minutes, seven-minute maximum | Video/ | 1920 × 1080, 36 fps and 200 seconds at the requested 1.5× playback speed. Full decode completed. |
+| MP4 in 16:9, preferably 1080p, target five minutes, seven-minute maximum | Video/ | 1920 × 1080, 36 fps and 300 seconds with 1.5× narrated segments and five practice checks. Full decode completed. |
 | Clear narration and optional credited low-level music | MP4 audio and six source tracks | Six George recordings and an original ambient track mixed at −27 dB. Human listening pass pending. |
 | Original work and complete editable source plus assets | _Code/, Narration/, requirements.txt and README | Custom Python renders the MP4 using the six editable cues and included source audio. |
 | Public repository, official naming and all deliverables in one place | M3_AnimationVideo_LimitsAndContinuity_E25B070810 | Repository contains final video, editable source, storyboard and support documents. Confirm the links in a private window before submission. |

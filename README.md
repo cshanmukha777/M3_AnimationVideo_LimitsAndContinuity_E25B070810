@@ -10,14 +10,14 @@ python _Code/main.py
 python _Code/storyboard.py
 ```
 
-The first render command creates Video/M3_Limits_and_Continuity_Video.mp4, at 1.5× speed, including the pitch-preserved narration and music. To reproduce the soundtrack before the speed adjustment:
+The first render command creates Video/M3_Limits_and_Continuity_Video.mp4, with 1.5× narration and five silent practice checks, including the pitch-preserved narration and music. To reproduce the soundtrack before the speed adjustment:
 
 ```sh
 PYTHONPATH=_Code python -c 'from pathlib import Path; from main import narration; narration(Path("."))'
 ffmpeg -y -i voice.wav -f lavfi -i 'aevalsrc=0.17*(sin(2*PI*130.8128*t)+0.6*sin(2*PI*195.9977*t)+0.45*sin(2*PI*261.6256*t))*(0.65+0.35*sin(2*PI*t/19)):s=48000:d=300' -filter_complex '[1:a]volume=-27dB,afade=t=in:d=2,afade=t=out:st=297:d=3[bed];[0:a][bed]amix=inputs=2:duration=first:normalize=0' -ar 48000 -ac 2 -c:a aac -b:a 128k mix.m4a
 ```
 
-Scene landmarks are 0:00, 0:24, 1:03, 1:35, 2:15 and 2:59. Musical tones use a root, fifth and octave. The closing frame credits the synthesized music. The renderer fits the voice to the original five-minute timeline before accelerating the full cut to 3:20.
+Scene landmarks are 0:00, 0:44, 1:43, 2:35, 3:35 and 4:39. Musical tones use a root, fifth and octave. The closing frame credits the synthesized music. The renderer fits the voice to the original five-minute timeline before accelerating the six narrated segments to a combined 3:20. Five 20-second practice checks bring the published cut to 5:00. Each check gives eight seconds to think and 12 seconds to read the answer.
 
 ## Mathematics
 

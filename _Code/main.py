@@ -4,6 +4,7 @@ import tempfile
 from pathlib import Path
 
 from scenes import frame
+from practice import extend
 
 ROOT=Path(__file__).resolve().parents[1]
 FPS=24
@@ -75,7 +76,9 @@ def render(output):
             encoder.stdin.close()
             if encoder.wait():
                 raise RuntimeError("Encoding failed")
-        speed_up(original, output)
+        accelerated=Path(directory)/"accelerated.mp4"
+        speed_up(original, accelerated)
+        extend(accelerated, output)
 
 
 if __name__=="__main__":
