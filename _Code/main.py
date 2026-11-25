@@ -1,5 +1,4 @@
 import argparse
-import math
 import subprocess
 import tempfile
 from pathlib import Path
@@ -8,6 +7,7 @@ from scenes import frame
 
 ROOT=Path(__file__).resolve().parents[1]
 FPS=24
+PLAYBACK_SPEED=1.5
 DURATIONS=(36,58,48,61,65,32)
 REVEALS=(.65,.76,.71,.72,.44,.74)
 AMBIENT="aevalsrc=0.17*(sin(2*PI*130.8128*t)+0.6*sin(2*PI*195.9977*t)+0.45*sin(2*PI*261.6256*t))*(0.65+0.35*sin(2*PI*t/19)):s=48000:d=300"
@@ -37,9 +37,19 @@ def narration(directory):
     return track
 
 
+def speed_up(source, output):
+    ffmpeg("-i",source,"-map","0:v:0","-map","0:a:0",
+           "-vf",f"setpts=PTS/{PLAYBACK_SPEED}",
+           "-af",f"atempo={PLAYBACK_SPEED},apad",
+           "-r",str(int(FPS*PLAYBACK_SPEED)),"-t",str(sum(DURATIONS)/PLAYBACK_SPEED),
+           "-c:v","libx264","-preset","fast","-crf","20","-pix_fmt","yuv420p",
+           "-threads","4","-c:a","aac","-b:a","160k","-movflags","+faststart",output)
+
+
 def render(output):
     output.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory() as directory:
+        original=Path(directory)/"original.mp4"
         stereo=Path(directory)/"mix.m4a"
         voice=narration(Path(directory))
         ffmpeg("-i",voice,"-f","lavfi","-i",AMBIENT,"-filter_complex",
@@ -48,7 +58,7 @@ def render(output):
         cmd=["ffmpeg","-loglevel","error","-y","-f","rawvideo","-pix_fmt","rgb24",
              "-s","1920x1080","-r",str(FPS),"-i","pipe:0","-i",str(stereo),"-vf","setsar=1",
              "-c:v","libx264","-pix_fmt","yuv420p","-threads","3","-preset","ultrafast",
-             "-crf","22","-c:a","copy","-movflags","+faststart",str(output)]
+             "-crf","22","-c:a","copy","-movflags","+faststart",str(original)]
         with subprocess.Popen(cmd,stdin=subprocess.PIPE) as encoder:
             for i,seconds in enumerate(DURATIONS):
                 previous=None
@@ -65,6 +75,7 @@ def render(output):
             encoder.stdin.close()
             if encoder.wait():
                 raise RuntimeError("Encoding failed")
+        speed_up(original, output)
 
 
 if __name__=="__main__":
